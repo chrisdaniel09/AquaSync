@@ -28,3 +28,14 @@ To compile and run this project on your local machine, follow these steps:
 4. Drop the file directly into the local project directory structure at:
    ```text
    AquaSync/app/google-services.json
+### 2. Enable Database & Security Options
+1. Authentication: In the Firebase Console, go to Build -> Authentication -> Sign-in method, enable Anonymous, and click save.
+2. Realtime Database: Create a Realtime Database cluster (Asia-Southeast1 / Singapore is recommended for lowest regional latency in India). Set your rules to require valid signatures:
+   ```json
+   {
+  "rules": {
+    ".read": "auth != null",
+    ".write": "auth != null"
+  }
+} 
+```
